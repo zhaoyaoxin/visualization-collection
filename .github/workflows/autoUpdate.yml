@@ -1,0 +1,23 @@
+name: Sync fork
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Sync fork
+      run: |
+        git config --global user.name "lumos"
+        git config --global user.email "2455519881@qq.com"
+        git remote add upstream https://github.com/original-owner/original-repo.git
+        git fetch upstream
+        git rebase upstream/main
+        git push
