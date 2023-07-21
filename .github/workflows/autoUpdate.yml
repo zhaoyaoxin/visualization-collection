@@ -17,7 +17,7 @@ jobs:
       run: |
         git config --global user.name "lumos"
         git config --global user.email "2455519881@qq.com"
-        git remote add upstream https://github.com/original-owner/original-repo.git
+        git remote add upstream git@github.com:hepengwei/visualization-collection.git
         git fetch upstream
-        git rebase upstream/main
+        git rebase upstream/master
         git push
